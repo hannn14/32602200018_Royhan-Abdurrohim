@@ -5,16 +5,16 @@ use App\Models\MahasiswaModel;
 
 class Crud extends BaseController
 {
-    protected $db;
+    protected $model;
     public function __construct()
     {
-        $this->db = new MahasiswaModel();
+        $this->model = new MahasiswaModel();
     }
 
     
     public function index()
     {
-        $all = $this->db->findAll();
+        $all = $this->model->findAll();
         $data = [
         'mahasiswa' => $all
         ];
@@ -32,7 +32,7 @@ class Crud extends BaseController
                 'universitas',
                 'nomor_handphone'
             ]);
-            $this->db->insert($data);
+            $this->model->insert($data);
             return redirect()->to(base_url('/crud'));
         } else {
             return view('crud/upload');
@@ -49,17 +49,17 @@ class Crud extends BaseController
                 'universitas',
                 'nomor_handphone'
             ]);
-            $this->db->update($id, $data);
+            $this->model->update($id, $data);
             return redirect()->to(base_url('/crud'));
         } else {
-            $data = ['data' => $this->db->find($id)];
+            $data = ['data' => $this->model->find($id)];
             return view('crud/edit', $data);
         }
     }
 
     public function hapus($id)
     {
-        $this->db->delete($id);
+        $this->model->delete($id);
         return redirect()->to(base_url('/crud'));
     }
 }
