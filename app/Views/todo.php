@@ -42,7 +42,7 @@
                 </button>
             </form>
             <form method="post" action="/hapus/<?= $t['id'] ?>">
-                <button type="submit" class="px-2 py-1 rounded bg-red-600 hover:bg-red-600/80 text-white">
+                <button type="submit" onclick="return confirm('Apakah kamu yakin?')" class="px-2 py-1 rounded bg-red-600 hover:bg-red-600/80 text-white">
                     Hapus
                 </button>
             </form>
