@@ -22,7 +22,8 @@ class Todo extends BaseController
 
     public function tambah()
     {
-        $data = $this->request->getPost(['nama']);
+        $data = $this->request->getPost(['nama', 'selesai']);
+        $data['selesai'] = $data['selesai'] === 'on' ? 1 : 0;
         $this->model->insert($data);
         return redirect()->to(base_url());
     }
